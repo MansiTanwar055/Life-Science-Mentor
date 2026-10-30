@@ -74,6 +74,29 @@ document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',(
 document.querySelectorAll('[data-home]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();showPortal();}));
 document.querySelectorAll('.year').forEach(el=>el.textContent=new Date().getFullYear());
 document.getElementById('year').textContent=new Date().getFullYear();
-document.querySelectorAll('.choose').forEach(b=>b.addEventListener('click',()=>{document.getElementById('session').value=b.dataset.service;document.getElementById('book').scrollIntoView({behavior:'smooth'});}));
+// Make the LifeSci Mentor navigation links work
+document.querySelectorAll('#lifeSite .navlinks a[href^="#"]').forEach(link => {
+  link.addEventListener('click', event => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
+
+    event.preventDefault();
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+    history.replaceState(null, '', link.getAttribute('href'));
+  });
+});
+
+// Make all Choose this session buttons work
+document.querySelectorAll('.choose').forEach(button => {
+  button.addEventListener('click', () => {
+    document.getElementById('book').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+});
 
 </script></body></html>
