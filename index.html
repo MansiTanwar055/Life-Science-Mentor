@@ -89,14 +89,15 @@ document.querySelectorAll('#lifeSite .navlinks a[href^="#"]').forEach(link => {
   });
 });
 
-// Make all Choose this session buttons work
-document.querySelectorAll('.choose').forEach(button => {
+
+// Open LifeSci Mentor Google Form on session selection
+const lifeSciFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSczMz5B8zhhoklK9WbYMUqhpHgxNiMDjx48jN3yi-aIf1zfnw/viewform";
+
+document.querySelectorAll('#lifeSite .choose').forEach(button => {
   button.addEventListener('click', () => {
-    document.getElementById('book').scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+    window.open(lifeSciFormURL, '_blank');
   });
 });
+
 
 </script></body></html>
